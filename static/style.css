@@ -1,0 +1,978 @@
+@charset "UTF-8";
+/* --------------------------------------------------
+  Template by espace（https://espace.monbalcon.net/）
+  Copyright: 2020 espace.
+
+  利用規約を遵守の上、ご利用ください。
+  二次配布、販売は禁止しています。
+  --------------------------------------------------*/
+
+/* ----- ▼ CSS変数設定 ここから ▼ ----- */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&family=Redacted+Script&family=Roboto+Condensed&family=Shippori+Mincho+B1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+:root {
+  --text-color: var(--theme-color1-more-dark);
+  --bg-color: #f8f8f8;
+  --required-color: #be0039;
+  --theme-color1-light: #fff;
+  --theme-color1-default: #e7e7e7;
+  --theme-color1-dark: #9b9b9b;
+  --theme-color1-more-dark: #333;
+  --theme-color2-light: #c7c7d8;
+  --theme-color2-default: #1a1b8a;
+  --animation: 0.5s;
+
+  /* ▼ novel viewerを使用しない場合は削除してOK ▼ */
+  /** 開閉ボタン **/
+  /* 背景色 */
+  --env-button-bg-color: var(--theme-color1-light);
+  /* 幅 */
+  --env-button-width: 30px;
+  /* 高さ */
+  --env-button-height: 50px;
+  /* 角丸サイズ */
+  --env-button-rounded: 25px 0 0 25px!important;
+  /* 上からの位置 */
+  --env-button-position-top: calc((100vh - 50px)/2 - 60px);
+  /* 右からの位置 */
+  --env-button-position-right: 0;
+  /** 設定画面 **/
+  /* リセットボタンテキスト */
+  --env-menu-reset-text: "reset";
+  /* タイトル下線色 */
+  --env-menu-title-border-color: var(--theme-color1-more-dark);
+  /* 文字色 */
+  --env-menu-color: var(--text-color);
+  /* 背景色 */
+  --env-menu-bg-color: var(--theme-color1-light);
+  /* 角丸サイズ */
+  --env-menu-rounded: 0;
+  /* 外側の背景色 */
+  --env-menu-overlay-color: rgba(0, 0, 0, 0.3);
+  /* input関係要素の角丸サイズ */
+  --env-menu-input-rounded: 3px;
+  /* inputの色（メイン） */
+  --env-menu-input-main-color: var(--theme-color1-more-dark);
+  /* inputの色（サブ） */
+  --env-menu-input-sub-color: var(--theme-color1-light);
+  /* input[type="range"]のバー色 */
+  --env-menu-input-bar-color: var(--theme-color1-default);
+  /** ベーシックモードのビジュアル設定 **/
+  /* デフォルトカラータイプ設定 */
+  --env-color-type-default-bg-color: var(--bg-color);
+  --env-color-type-default-color: var(--text-color);
+  /** 各種アニメーションの時間 **/
+  --env-animation: var(--animation);
+  /* ▲ novel viewerを使用しない場合は削除してOK ▲ */
+
+  /* ▼ my galleryを使用しない場合は削除してOK ▼ */
+  /** スマホ設定 **/
+  /** 装飾設定 **/
+  /* 角丸 */
+  --emg-radius: 3px;
+  /* 線色 */
+  --emg-border-color: var(--theme-color1-more-dark);
+  /** 新着マーク設定 **/
+  /* 背景色 */
+  --emg-new-bg-color: var(--theme-color1-more-dark);
+  /* 文字色 */
+  --emg-new-text-color: var(--theme-color1-light);
+  /** キャプション設定 **/
+  /* 文字色 */
+  --emg-caption-text-color: var(--theme-color1-light);
+  /* ▲ my galleryを使用しない場合は削除してOK ▲ */
+
+  /* ▼ chara setを使用しない場合は削除してOK ▼ */
+  /**** リスト設定 ****/
+  /* 線色 */
+  --ecs-list-border-color: var(--theme-color1-more-dark);
+  /* 角丸 */
+  --ecs-list-border-radius: 3px;
+  /* 背景色 */
+  --ecs-list-bg-color: var(--theme-color1-light);
+  /** 列設定 **/
+  /* 画像リスト・PC */
+  --ecs-list-img-count-pc: 7;
+  /** 準備中設定 **/
+  /* 背景色 */
+  --ecs-span-bg-color: var(--theme-color1-more-dark);
+  /* テキスト色 */
+  --ecs-span-tx-color: var(--theme-color1-light);
+  /**** コンテンツ設定 ****/
+  /** データ要素（項目名）設定 **/
+  /* 線幅 */
+  --ecs-data-border-width: 0;
+  /* 角丸 */
+  --ecs-data-border-radius: 3px;
+  /* 背景色 */
+  --ecs-data-bg-color: var(--theme-color1-more-dark);
+  /* テキスト色 */
+  --ecs-data-text-color: var(--theme-color1-light);
+  /** 時系列要素設定 **/
+  /* 線幅 */
+  --ecs-history-border-width: 8px;
+  /* 線色 */
+  --ecs-history-border-color: var(--theme-color1-default);
+  /* 丸の色 */
+  --ecs-history-circle-color: var(--theme-color1-more-dark);
+  /** 画像要素設定 **/
+  /* 線色 */
+  --ecs-img-border-color: var(--theme-color1-more-dark);
+  /* ▲ chara setを使用しない場合は削除してOK ▲ */
+
+  /* ▼ my bookshelfを使用しない場合は削除してOK ▼ */
+  /* newマーク・背景色 */
+  --ebs-new-bg-color: var(--theme-color1-more-dark);
+  /* newマーク・テキスト色 */
+  --ebs-new-text-color: var(--theme-color1-light);
+  /** ebs-borderの設定 **/
+  /* 線幅 */
+  --ebs-border-width: 2px;
+  /* 線色 */
+  --ebs-border-color: var(--theme-color1-default);
+  /* 角丸サイズ */
+  --ebs-border-radius: 3px;
+  /** 装飾の設定 **/
+  /* 下線（色） */
+  --ebs-text-border-color: var(--theme-color1-default);
+  /* 下線（幅） */
+  --ebs-text-border-width: 2px;
+  /* 強調テキスト背景色 */
+  --ebs-text-em-bg-color: var(--theme-color2-light);
+  /* ボタン風リンク（テキスト色） */
+  --ebs-link-btn-text-color: var(--theme-color1-light);
+  /* ボタン風リンク（背景色） */
+  --ebs-link-btn-bg-color: var(--theme-color1-more-dark)!important;
+  /* ボタン風リンク（角丸サイズ） */
+  --ebs-link-btn-radius: 3px;
+  /* ▲ my bookshelfを使用しない場合は削除してOK ▲ */
+}
+/* ----- ▲ CSS変数設定 ここまで ▲ ----- */
+
+/* ----- ▼ リセット　ここから（基本的には触らない方が良い部分） ▼ ----- */
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/*
+  Add by espace
+*/
+* {
+  word-break: break-all;
+}
+
+:focus {
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  word-wrap: break-word;
+}
+
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  margin-block: 0;
+  margin-inline: auto;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+  max-inline-size: 100%;
+}
+
+p,
+dl,
+ul,
+ol,
+form,
+.box,
+.scrollbox {
+  margin-block: 2.5rem;
+  margin-inline: auto;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+main {
+  hanging-punctuation: allow-end;
+}
+/* ----- ▲ リセット　ここまで（基本的には触らない方が良い部分） ▲ ----- */
+
+/* ----- ▼ PCレイアウト　ここから ▼ ----- */
+/* 基本 */
+html {
+  background: var(--bg-color);
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font: 500 1.6rem/2.65rem "Yu Gothic", Meiryo, "Hiragino Kaku Gothic ProN", sans-serif;
+  color: var(--text-color);
+}
+
+header {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 90;
+}
+
+main {
+  margin-top: 100px;
+  max-width: 1000px;
+  margin-inline: auto;
+  margin-block-end: 5rem;
+}
+
+footer {
+  padding: 2.5rem 2.5rem 10rem;
+  text-align: center;
+}
+
+/* メニュー */
+.menu,
+.manu-toggler {
+  position: fixed;
+  background: var(--theme-color1-light);
+  transition: all var(--animation);
+}
+.menu.open,
+.manu-toggler.open {
+  transform: translateX(-250px);
+}
+
+.menu {
+  top: 0;
+  right: -250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 250px;
+  height: 100vh;
+  z-index: 91;
+  font-family: "Roboto Condensed", "Yu Gothic", Meiryo, "Hiragino Kaku Gothic ProN", sans-serif;
+}
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0 1.25rem;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+.menu a {
+  display: block;
+  padding: 0.625rem 1.25rem;
+  color: var(--text-color);
+}
+.menu a:hover {
+  background: var(--bg-color);
+}
+
+.manu-toggler {
+  top: calc((100vh - 50px) / 2);
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 50px;
+  padding-left: 14px;
+  border-radius: 25px 0 0 25px;
+  border: 0;
+  color: var(--text-color);
+  z-index: 91;
+}
+.manu-toggler::before {
+  content: "\e5d2";
+  font: 400 18px/1 "Material Symbols Rounded";
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+.manu-toggler.open::before {
+  content: "\e9bd";
+}
+
+.fixed-menu {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.fixed-menu ul {
+  display: flex;
+  gap: 0.625rem;
+  margin: 0;
+}
+.fixed-menu a,
+.fixed-menu button,
+.fixed-menu span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 20px !important;
+  background: var(--theme-color1-light) !important;
+  color: var(--text-color) !important;
+  pointer-events: auto;
+}
+.fixed-menu a::before,
+.fixed-menu button::before,
+.fixed-menu span::before {
+  font: 400 18px/1 "Material Symbols Rounded";
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+.fixed-menu span {
+  opacity: 0.5;
+}
+.fixed-menu li.next::before {
+  content: none;
+}
+.fixed-menu li.pagetop a::before,
+.fixed-menu li.pagetop button::before,
+.fixed-menu li.pagetop span::before {
+  content: "\eacf";
+}
+.fixed-menu li.prev a::before,
+.fixed-menu li.prev button::before,
+.fixed-menu li.prev span::before {
+  content: "\e5cb";
+}
+.fixed-menu li.next a::before,
+.fixed-menu li.next button::before,
+.fixed-menu li.next span::before {
+  content: "\e5cc";
+}
+.fixed-menu li.home a::before,
+.fixed-menu li.home button::before,
+.fixed-menu li.home span::before {
+  content: "\e88a";
+}
+.fixed-menu li.toc a::before,
+.fixed-menu li.toc button::before,
+.fixed-menu li.toc span::before {
+  content: "\ea19";
+}
+.fixed-menu li.characters a::before,
+.fixed-menu li.characters button::before,
+.fixed-menu li.characters span::before {
+  content: "\e7fd";
+}
+.fixed-menu li.images a::before,
+.fixed-menu li.images button::before,
+.fixed-menu li.images span::before {
+  content: "\e413";
+}
+
+/* 見出し */
+h1 {
+  position: relative;
+  font: 50px/60px "EB Garamond", "Shippori Mincho B1", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  letter-spacing: 2px;
+  padding: 0 10px;
+  color: black;
+}
+h1::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 5px;
+  font: 60px/1 "Redacted Script";
+  opacity: 0.25;
+}
+h1 a {
+  color: var(--text-color);
+  transition: all var(--animation);
+}
+h1 a:hover {
+  color: var(--theme-color2-default);
+  background: none;
+}
+
+h2, h3 {
+  margin-block: 10rem;
+  letter-spacing: 4px;
+}
+
+h2 {
+  margin-inline: auto;
+  padding-block-end: 2.5rem;
+  border-block-end: 6px solid var(--theme-color1-default);
+  text-align: center;
+  font: 500 24px/1 "EB Garamond", "Shippori Mincho B1", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+}
+
+h3, h4, h5 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+h3 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block-start: 2.5rem;
+  padding-inline-start: 4px;
+  text-align: center;
+}
+h3::before, h3::after {
+  content: "";
+  display: block;
+  block-size: 6px;
+  inline-size: 100%;
+  background: var(--theme-color1-default);
+}
+th {
+  width: 150px; /* ヘッダーセルの幅を150pxに設定 */
+  height: 50px; /* ヘッダーセルの高さを50pxに設定 */
+  padding: 10px; /* 内側の余白を10pxに設定 */
+  font-size: 16px; /* フォントサイズを16pxに設定 */
+  text-align: center; /* テキストを中央揃えに設定 */
+  background-color: #f2f2f2; /* 背景色を設定 */
+  border: 1px solid black; /* 枠線を設定 */
+}
+h3 span {
+  display: block;
+  inline-size: calc(100% - 200px);
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+  z-index: 1;
+}
+
+h4, h5 {
+  margin-block: 10rem 5rem;
+}
+h4 span, h5 span {
+  padding-block-end: 1.25rem;
+}
+
+h4 span {
+  border-block-end: 4px solid var(--theme-color1-default);
+}
+
+h5 span {
+  border-block-end: 2px solid var(--theme-color1-default);
+}
+
+/* リスト */
+ul.no-style, ol.no-style {
+  padding: 0;
+  list-style: none;
+}
+ul.column, ol.column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+ul.column > *, ol.column > * {
+  margin: 0 !important;
+}
+ul.column.gap, ol.column.gap {
+  gap: 5px 25px;
+}
+ul.column.column-2 > *, ol.column.column-2 > * {
+  inline-size: calc((100% - 25px) / 2) !important;
+}
+ul.column.column-3 > *, ol.column.column-3 > * {
+  inline-size: calc((100% - 50px) / 3) !important;
+}
+ul .description, ol .description {
+  margin-inline-start: 10px;
+}
+ul .description::before, ol .description::before {
+  content: "…";
+  margin-inline-end: 10px;
+}
+ul .description:has(ul.small), ul .description:has(ol.small), ol .description:has(ul.small), ol .description:has(ol.small) {
+  display: flex;
+  justify-content: flex-start;
+}
+ul .description:has(ul.small)::before, ul .description:has(ol.small)::before, ol .description:has(ul.small)::before, ol .description:has(ol.small)::before {
+  content: "└";
+}
+ul .description > ul.small, ol .description > ul.small {
+  display: inline-block;
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+dl dd {
+  margin-block-end: 1.25rem;
+  padding-inline-start: 5rem;
+  padding-block-end: 1.25rem;
+}
+dl dd:last-of-type {
+  padding-block-end: 0 !important;
+  border-block-end: 0 !important;
+}
+dl.inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 0;
+}
+dl.inline dt, dl.inline dd {
+  margin-block-end: 0;
+  padding-block-end: 1.25rem;
+}
+dl.inline dt:last-of-type, dl.inline dd:last-of-type {
+  padding-block-end: 0 !important;
+  border-block-end: 0 !important;
+}
+dl.inline dt {
+  inline-size: 200px;
+}
+dl.inline dd {
+  inline-size: calc(100% - 200px);
+  padding-inline-start: 0;
+}
+
+ul li.next {
+  list-style: none;
+}
+ul li.next::before {
+  content: "→";
+  margin-inline-end: 5px;
+  font-size: 120%;
+}
+ul.small {
+  list-style: none;
+  padding-inline-start: 0;
+}
+ul.small li {
+  display: inline;
+}
+ul.small li::before {
+  color: var(--theme-color1-default);
+}
+ul.small li:not(:first-child):not(.next)::before {
+  content: ":";
+  margin-block: 0;
+  margin-inline: 2px 5px;
+  font-weight: 900;
+}
+ul.small li.next::before {
+  margin-block: 0;
+  margin-inline: 2px 7px;
+}
+
+dl dd {
+  border-block-end: 1px solid var(--theme-color1-default);
+}
+dl.inline dt,
+dl.inline dd {
+  border-block-end: 1px solid var(--theme-color1-default);
+}
+dl.border {
+  padding-block: 15px;
+  padding-inline: 20px;
+  border: 2px solid var(--theme-color1-default);
+  border-radius: 3px;
+}
+
+/* フォーム */
+.required::after {
+  content: "*";
+  color: var(--required-color);
+}
+
+.form-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.form-block > dl:first-child {
+  margin-block-start: 0;
+}
+.form-block > dl:last-of-type {
+  margin-block-end: 0;
+}
+.form-block dl dt,
+.form-block dl dd {
+  margin: 0;
+  padding: 0;
+  border-block-end: 0;
+}
+.form-block dl dd > * {
+  margin: 0;
+}
+.form-block dl.inline {
+  gap: 1.25rem 0;
+}
+.form-block dl.inline dt {
+  inline-size: 130px;
+}
+.form-block dl.inline dd {
+  inline-size: calc(100% - 130px);
+}
+.form-block > *,
+.form-block dl dd > * {
+  inline-size: 100%;
+}
+
+input, textarea, select,
+button:not(.manu-toggler):not(.env-button), input[type=submit], input[type=button] {
+  border-radius: 3px;
+  transition: all var(--animation);
+}
+
+input, textarea, select {
+  border: 2px solid var(--theme-color1-default);
+  background: var(--theme-color1-default);
+}
+input:hover, input:focus, textarea:hover, textarea:focus, select:hover, select:focus {
+  background: var(--theme-color1-light);
+}
+
+button:not(.manu-toggler):not(.env-button), input[type=submit], input[type=button] {
+  transition: all var(--animation);
+  padding-block: 4px;
+  padding-inline: 8px;
+  border: 0;
+  background: var(--theme-color1-more-dark);
+  color: var(--theme-color1-light);
+}
+button:not(.manu-toggler):not(.env-button):hover, input[type=submit]:hover, input[type=button]:hover {
+  background: var(--theme-color2-default);
+}
+
+/* リンク */
+a {
+  color: var(--theme-color2-default);
+  transition: all var(--animation);
+}
+a:not(.ebs-link-btn):hover {
+  background: var(--theme-color1-default);
+}
+
+/* 装飾 */
+b, em, strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 50%, var(--theme-color1-default) 50%);
+}
+
+strong {
+  background: var(--theme-color1-default);
+}
+
+hr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-block: 10rem;
+  gap: 4px;
+  border: 0;
+}
+hr::before, hr::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 6px;
+  border: 1px solid var(--theme-color1-dark);
+  border-left: 0;
+  border-right: 0;
+}
+
+.box {
+  padding: 20px;
+  border: 2px solid var(--theme-color1-default);
+  border-radius: 3px;
+}
+.box > *:first-child {
+  margin-block-start: 0;
+  padding-block-start: 0;
+}
+.box > *:last-child {
+  margin-block-end: 0;
+  padding-block-end: 0;
+}
+
+.scrollbox {
+  overflow-y: auto;
+  max-block-size: 14rem;
+}
+.scrollbox::-webkit-scrollbar {
+  inline-size: 10px;
+}
+.scrollbox::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.scrollbox::-webkit-scrollbar-thumb {
+  background-color: var(--theme-color1-default);
+  border-radius: 10px;
+}
+.scrollbox > *:first-child {
+  margin-block-start: 0;
+  padding-block-start: 0;
+}
+.scrollbox > *:last-child {
+  margin-block-start: 0;
+  padding-block-start: 0;
+}
+
+.onlyrow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.material-symbols-rounded {
+  font-size: initial;
+  vertical-align: unset;
+}
+
+.column {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  margin-block: 2.5rem;
+  margin-inline: auto;
+}
+.column > * {
+  margin: 0 !important;
+}
+.column.column-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.column.column-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-bold {
+  font-weight: bold;
+}
+.text-small {
+  font-size: smaller;
+}
+.text-large {
+  font-size: larger;
+}
+
+/* ▼ novel viewerを使用しない場合は削除してOK ▼ */
+.env-writing-mode-vertical::-webkit-scrollbar {
+  inline-size: 10px;
+}
+.env-writing-mode-vertical::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.env-writing-mode-vertical::-webkit-scrollbar-thumb {
+  background-color: var(--theme-color1-default);
+  border-radius: 10px;
+}
+.env-writing-mode-vertical hr {
+  flex-direction: row;
+}
+
+.env-menu.env-menu-top .env-menu-inner,
+.env-menu.env-menu-bottom .env-menu-inner,
+.env-menu.env-menu-left .env-menu-inner,
+.env-menu.env-menu-right .env-menu-inner,
+.env-button {
+  transition: all var(--env-animation);
+}
+
+.env-menu.env-menu-right .env-menu-inner {
+  width: 370px;
+  right: -370px;
+}
+
+.env-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2px 0 12px;
+  border-radius: 25px 0 0 25px;
+  border: 0;
+  z-index: 98;
+}
+.env-button::before {
+  height: 18px;
+}
+.env-button::after {
+  content: none;
+}
+.env-button.open {
+  z-index: 91;
+  right: 370px !important;
+  z-index: 98;
+}
+.env-button.open::after {
+  content: none;
+}
+/* ▲ novel viewerを使用しない場合は削除してOK ▲ */
+/* ----- ▲ PCレイアウト　ここまで ▲ ----- */
+
+/* ----- ▼ SPレイアウト　ここから ▼ ----- */
+@media only screen and (max-width: 1024px) {
+  /* 基本 */
+  body,
+  button,
+  input,
+  textarea {
+    font-size: 1.6rem;
+    line-height: 2.65rem;
+  }
+  main {
+    margin-inline: 1.25rem;
+  }
+  /* 見出し */
+  h3 span {
+    width: calc(100% - 80px);
+  }
+  h3::before, h3::after {
+    width: 40px;
+  }
+  /* リスト */
+  ul.no-style, ol.no-style {
+    padding: 0;
+    list-style: none;
+  }
+  ul.column, ol.column {
+    display: flex;
+    flex-direction: column;
+  }
+  ul.column.column-2 > *, ul.column.column-3 > *, ol.column.column-2 > *, ol.column.column-3 > * {
+    inline-size: 100% !important;
+  }
+  ul .description, ol .description {
+    display: block;
+    margin-inline-start: 10px;
+  }
+  ul .description::before, ol .description::before {
+    content: "└";
+    margin-inline-end: 10px;
+  }
+  dl.border, dl.inline {
+    display: block;
+  }
+  dl.border dt, dl.border dd, dl.inline dt, dl.inline dd {
+    inline-size: 100%;
+  }
+  dl.border dt, dl.inline dt {
+    padding-block-end: 0;
+    border-block-end: 0;
+  }
+  dl.border dd, dl.inline dd {
+    padding-inline-start: 5rem;
+    margin-block-end: 1.25rem;
+  }
+  dl.border dd:last-of-type, dl.inline dd:last-of-type {
+    margin-block-end: 0;
+  }
+  /* フォーム */
+  .form-inline input {
+    inline-size: 40%;
+  }
+  .form-block dl {
+    flex-direction: column;
+  }
+  .form-block dl.inline dt, .form-block dl.inline dd {
+    inline-size: 100%;
+  }
+  /* 装飾 */
+  .column.column-sp-1 {
+    grid-template-columns: 1fr;
+  }
+  .column.column-sp-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .column.column-sp-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* ▼ novel viewerを使用しない場合は削除してOK ▼ */
+  .env-menu.env-menu-right .env-menu-inner {
+    width: calc(100vw - 70px);
+    right: calc(-100vw + 70px);
+  }
+  .env-button.open {
+    right: calc(100vw - 70px) !important;
+  }
+  /* ▲ novel viewerを使用しない場合は削除してOK ▲ */
+}
+/* ----- ▲ SPレイアウト　ここまで ▲ ----- */
