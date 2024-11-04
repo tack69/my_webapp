@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>TextifySnap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* 追加スタイル */
+        body {
+            background-color: #FAFAFA; /* 背景を少しオフホワイトに */
+            font-family: Arial, sans-serif; /* フォントをシンプルに */
+        }
+
+        header, nav, main, footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0;
+        }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <h1 style="display: flex; justify-content: center; align-items: center; height: 100px;">経理自動処理システム</h1>
+        <nav id="mainMenu" data-toggler="mainMenuToggler" class="menu">
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+                <li><a href="#">menu5</a></li>
+            </ul>
+        </nav>
+    </header>
+    <button id="mainMenuToggler" class="menu-toggler" data-open="false"></button>
+
+    <!-- メイン -->
+    <main>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        <!-- 経費 -->
+        <h3><span>レシート選択</span></h3>
+            <div>
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" accept='image/*'>
+                    <input type="submit" value="表に入力する">
+                </form>
+            </div>
+
+            <h3><span>経理データ</span></h3>
+            <table border='1'>
+                <thead>
+                    <tr>
+
+                        <th>日付</th>
+                        <th>商品名</th>
+                        <th>金額</th>
+                        <th>個数</th>
+                        <th>合計金額</th>
+                    </tr>
+                </thead>
+                 {% for product in ls %}
+                    <tr>
+                        <th>{{date}}</th>
+                        <th>{{product[0]}}</th>
+                        <th>{{product[2]}}</th>
+                        <th>{{product[1]}}</th>
+                        <th>{{product[3]}}</th>
+                    </tr>
+                
+                {% endfor %}
+                <form action="{{ url_for('clear_table') }}" method="post">
+                    <button type="submit">表の内容を削除</button>
+                </form>
+                
+            </table>
+
+        </article>
+
+</body>
+</html>
